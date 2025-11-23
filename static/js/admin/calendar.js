@@ -260,17 +260,46 @@ async function importExcel() {
         showAlert({ type: "warning", title: "Файл", text: "Выберите .xlsx файл" });
         return;
     }
+
+    const fileName = input.files[0].name;
+
     const fd = new FormData();
     fd.append("file", input.files[0]);
+
     const data = await requestJson("/api/import_excel", { method: "POST", body: fd });
+
     if (!data.ok) {
         showAlert({ type: "error", title: "Импорт", text: data.error || "Ошибка импорта" });
         return;
     }
+
     input.value = "";
-    showAlert({ type: "success", title: "Импорт", text: `Добавлено занятий: ${data.created}` });
+
+    showAlert({
+        type: "success",
+        title: "Импорт",
+        text: `Файл: ${fileName}\nДобавлено занятий: ${data.created}`
+    });
+
     setTimeout(() => window.location.reload(), 500);
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+    const input = document.getElementById("excel-file");
+    const label = document.querySelector(".file-btn");
+
+    if (input && label) {
+        input.addEventListener("change", () => {
+            if (input.files.length > 0) {
+                label.textContent = input.files[0].name;
+            } else {
+                label.textContent = "Выбрать .xlsx"; 
+            }
+        });
+    }
+});
+
+
 
 async function clearAllLessons() {
     const input = document.getElementById("excel-file");
