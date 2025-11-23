@@ -125,6 +125,25 @@ function renderCalendar() {
     }
 }
 
+
+async function loadSubjectsToModal() {
+    const res = await requestJson("/api/subjects");
+    const select = document.getElementById("modal-subject");
+    if (!select || !Array.isArray(res)) return;
+
+    const current = select.value;
+
+    select.innerHTML = `<option value="">Выберите дисциплину</option>`;
+    res.forEach(sub => {
+        const opt = document.createElement("option");
+        opt.value = sub;
+        opt.textContent = sub;
+        select.appendChild(opt);
+    });
+
+    if (current) select.value = current;
+}
+
 function renderNotes(cell, cellDate) {
     const iso = formatDate(cellDate);
     let dayLessons = (window.lessonsCache || []).filter(l => l.date === iso);
@@ -172,20 +191,26 @@ function renderNotes(cell, cellDate) {
     }
 }
 
-function openModal(dateObj) {
+async function openModal(dateObj) {
     selectedDate = dateObj;
+
+    await loadSubjectsToModal();
+
     document.getElementById("modal-date-title").textContent = formatDate(dateObj);
     document.getElementById("modal-date").value = formatDate(dateObj);
+
     document.getElementById("modal-subject").value = "";
     document.getElementById("modal-teacher").value = "";
     document.getElementById("modal-audience").value = "";
     document.getElementById("modal-status").value = "scheduled";
     document.getElementById("modal-comment").value = "";
     document.getElementById("modal-pair").value = "1";
+
     editingLessonId = null;
     document.getElementById("lessonModal").classList.add("show");
     document.getElementById("delete-btn").style.display = "none";
 }
+
 
 function closeModal() {
     document.getElementById("lessonModal").classList.remove("show");
@@ -314,20 +339,26 @@ async function clearAllLessons() {
     hideClearConfirm();
 }
 
-function openEdit(lesson) {
+async function openEdit(lesson) {
     selectedDate = new Date(lesson.date + "T00:00:00");
     editingLessonId = lesson.id;
+
+    await loadSubjectsToModal();
+
     document.getElementById("lessonModal").classList.add("show");
     document.getElementById("delete-btn").style.display = "inline-block";
+
     document.getElementById("modal-date").value = lesson.date;
     document.getElementById("modal-date-title").textContent = lesson.date;
     document.getElementById("modal-pair").value = lesson.pair;
+
     document.getElementById("modal-subject").value = lesson.subject || "";
     document.getElementById("modal-teacher").value = lesson.teacher || "";
     document.getElementById("modal-audience").value = lesson.audience || "";
     document.getElementById("modal-status").value = lesson.status || "scheduled";
     document.getElementById("modal-comment").value = lesson.comment || "";
 }
+
 
 async function deleteLesson() {
     if (!editingLessonId) return;
