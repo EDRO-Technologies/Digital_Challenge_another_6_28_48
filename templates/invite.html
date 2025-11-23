@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block title %}Запись на курс{% endblock %}
+
+{% block content %}
+<div class="container" style="padding:40px 0;">
+    <h1>Курс: {{ course.title }}</h1>
+    <p>Преподаватель: {{ course.instructor or "—" }}</p>
+    <p>{{ course.description or "" }}</p>
+
+    <div style="margin:20px 0;">
+        <div>Пригласительный код: <code>{{ course.invite_code }}</code></div>
+        <div>Ссылка: <code>{{ request.host_url.rstrip('/') }}/invite/{{ course.invite_code }}</code></div>
+    </div>
+
+    <button class="btn" onclick="registerToCourse('{{ course.invite_code }}')">Записаться</button>
+
+    <div id="invite-status" style="margin-top:16px;"></div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+async function registerToCourse(code) {
+    const box = document.getElementById("invite-status");
+    box.textContent = "Отправляем запрос...";
+    try {
+        const res = await fetch(`/api/courses/${code}/register`, { method: "POST" });
+        const data = await res.json();
+        if (data.ok) {
+            box.textContent = data.message || "Вы успешно записаны на курс";
+        } else {
+            box.textContent = data.error || "Не удалось записаться";
+        }
+    } catch (e) {
+        box.textContent = "Ошибка сети";
+    }
+}
+</script>
+{% endblock %}

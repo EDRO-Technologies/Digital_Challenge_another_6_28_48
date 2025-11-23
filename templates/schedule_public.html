@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %}Расписание{% endblock %}
+
+{% block content %}
+<div class="container admin-schedule">
+    <div class="schedule-header">
+        <h1>Расписание</h1>
+        <p>Все занятия по дням</p>
+    </div>
+
+    <div class="panel">
+        <div class="calendar-wrapper">
+            <div id="public-calendar" class="calendar"></div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="/static/js/components/alerts.js"></script>
+<script src="/static/js/schedule_public.js"></script>
+{% endblock %}

@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block title %}Главная{% endblock %}
+
+{% block content %}
+<div class="container">
+    <section class="hero-case">
+
+    <div class="hero-left">
+
+        <h1 class="hero-title">
+            Умное расписание<br>для курсов и потоков
+        </h1>
+
+        <p class="hero-subtitle">
+            Создавайте, редактируйте и обновляйте расписания.  
+            Система сама уведомит студентов, преподавателей и персонал.
+        </p>
+
+        <div class="hero-features">
+            <div class="feature-item">
+                <img src="/static/img/icons/alert_success.svg" alt="">
+                <span>Уведомления об изменениях</span>
+            </div>
+
+            <div class="feature-item">
+                <img src="/static/img/icons/alert_success.svg" alt="">
+                <span>Редактирование занятий</span>
+            </div>
+
+            <div class="feature-item">
+                <img src="/static/img/icons/alert_success.svg" alt="">
+                <span>Интеграции с сайтами и личным кабинетом</span>
+            </div>
+        </div>
+
+        <div class="hero-buttons">
+            <a href="/login" class="hero-btn primary">Попробовать</a>
+            <a href="/schedule" class="hero-btn secondary">Расписание</a>
+        </div>
+
+    </div>
+
+    <div class="hero-right">
+        <img 
+            src="/static/img/icons/schedule.png"
+            alt="Иллюстрация расписания"
+            class="hero-illustration"
+        >
+    </div>
+
+</section>
+</div>
+
+{% endblock %}
+
+

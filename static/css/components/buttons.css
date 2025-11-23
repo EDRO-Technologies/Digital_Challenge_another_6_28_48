@@ -1,0 +1,53 @@
+/* ===============================
+      HEADER BUTTONS
+================================*/
+
+.header-btn {
+  padding: 13px 20px;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 20px;
+  border-radius: 14px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  transition: 0.25s ease;
+}
+
+.header-btn--outline {
+  box-shadow: inset 0 0 0 2px var(--color-border);
+  color: var(--color-text);
+  background: transparent;
+}
+
+.header-btn--outline:hover {
+  background: var(--color-accent);
+  color: var(--color-bg);
+  box-shadow: inset 0 0 0 0 transparent;
+}
+
+.header-btn--filled {
+  background: var(--color-primary);
+  color: var(--color-bg);
+  border: none;
+}
+
+.header-btn--filled:hover {
+  background: var(--color-accent);
+}
+
+@media (max-width: 1200px) {
+  .header-btn {
+    padding: 10px 16px;
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 345px) {
+  .header-btn {
+    padding: 10px 10px;
+    font-size: 15px;
+  }
+}

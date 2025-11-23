@@ -1,0 +1,15 @@
+<div class="checkbox">
+    <input 
+        id="{{ id }}"
+        type="checkbox"
+        name="{{ name }}"
+        {% if checked %}checked{% endif %}
+    >
+
+    <label for="{{ id }}" class="checkbox-box">
+        <img 
+            src="{{ url_for('static', filename='img/icons/check.svg') }}" 
+            class="checkbox-icon"
+        >
+    </label>
+</div>

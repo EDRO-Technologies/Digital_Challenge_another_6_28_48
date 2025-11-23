@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block title %}Вход{% endblock %}
+
+{% block content %}
+
+<section class="auth-wrapper">
+
+    <div class="auth-card">
+
+        <div class="auth-tabs">
+            <a href="/login" class="auth-tab active">Вход</a>
+            <a href="/register" class="auth-tab">Регистрация</a>
+        </div>
+
+        <div class="auth-logo">
+            <img src="{{ url_for('static', filename='img/icons/Logo.svg') }}" alt="">
+        </div>
+
+        <div class="auth-form">
+
+            <label class="auth-label">Имя пользователя *</label>
+                {% set id = "login-username" %}
+                {% set icon = url_for('static', filename='img/icons/user.svg') %}
+                {% set icon_active = url_for('static', filename='img/icons/user_active.svg') %}
+                {% set type = "text" %}
+                {% set placeholder = "Введите имя пользователя" %}
+                {% include 'components/input_icon.html' %}
+
+            <div class="auth-row">
+                <label class="auth-label">Пароль *</label>
+            </div>
+
+            {% set id = "login-password" %}
+            {% set icon = url_for('static', filename='img/icons/lock.svg') %}
+            {% set icon_active = url_for('static', filename='img/icons/lock_active.svg') %}
+            {% set type = "password" %}
+            {% set placeholder = "Введите пароль" %}
+            {% include 'components/input_icon.html' %}
+
+            <div class="auth-row">
+                <a href="#" class="auth-forgot">Забыли пароль?</a>
+            </div>
+
+            <div class="auth-btn">
+                {% set text = "Войти" %}
+                {% set onclick = "loginUser()" %}
+                {% include "components/button.html" %}
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

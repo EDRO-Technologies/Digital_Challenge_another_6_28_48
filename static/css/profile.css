@@ -1,0 +1,210 @@
+/* =========================================================
+   PROFILE PAGE
+========================================================= */
+
+.profile-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 40px 16px;
+}
+
+.profile-card {
+    width: 100%;
+    max-width: 1100px;
+
+    background: #fff;
+    border-radius: 30px;
+
+    padding: 40px 30px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.profile-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.profile-photo-bg {
+    width: 90px;
+    height: 90px;
+
+    background: #F4F4F4;
+    border-radius: 255px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+}
+
+.profile-photo-bg img {
+    width: 60px;
+    height: 60px;
+    border-radius: 20px;
+    object-fit: cover;
+}
+
+.profile-info {
+    margin-left: 24px;
+    flex: 1;
+}
+
+.profile-info p{
+    margin: 0;
+}
+
+.profile-name {
+    font-size: 22px;
+    font-weight: 600;
+    color: #333;
+}
+
+.profile-email {
+    font-size: 15px;
+    font-weight: 500;
+    opacity: 0.85;
+    margin-top: 6px;
+}
+
+
+
+
+/* =========================================================
+   GRID
+========================================================= */
+
+.profile-grid {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px 26px;
+}
+
+.field-block {
+    display: flex;
+    flex-direction: column;
+}
+
+.profile-label {
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 8px;
+}
+
+/* =========================================================
+   АДАПТИВ
+========================================================= */
+
+@media (max-width: 1100px) {
+
+    .profile-card {
+        padding: 32px 24px;
+        border-radius: 26px;
+    }
+
+    .profile-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+
+    .profile-name {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 800px) {
+
+    .profile-top {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 14px;
+    }
+
+    .profile-info {
+        margin-left: 0;
+    }
+
+    .profile-photo-bg {
+        width: 86px;
+        height: 86px;
+    }
+
+    .profile-photo-bg img {
+        width: 56px;
+        height: 56px;
+    }
+
+    .profile-edit {
+        margin-top: 4px;
+    }
+
+    .profile-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 18px 20px;
+    }
+
+    .profile-label {
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 600px) {
+
+    .profile-card {
+        padding: 26px 18px;
+        border-radius: 22px;
+    }
+
+    .profile-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .profile-top {
+        text-align: center;
+        gap: 12px;
+    }
+
+    .profile-name {
+        font-size: 18px;
+    }
+
+    .profile-email {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 400px) {
+
+    .profile-card {
+        padding: 22px 14px;
+    }
+
+    .profile-photo-bg {
+        width: 78px;
+        height: 78px;
+    }
+
+    .profile-photo-bg img {
+        width: 50px;
+        height: 50px;
+    }
+
+    .profile-name {
+        font-size: 17px;
+    }
+
+    .profile-label {
+        font-size: 14px;
+    }
+}
+

@@ -1,0 +1,153 @@
+{% extends "base.html" %}
+{% block title %}Создать расписание{% endblock %}
+
+{% block content %}
+<div class="container admin-schedule">
+    <div class="schedule-header">
+        <h1>Редактор расписания</h1>
+    </div>
+
+    <div class="panel">
+        <div class="calendar-toolbar">
+            <button class="btn-outline" id="prev-month">
+                <img src="/static/img/icons/arrow-left.svg" alt="prev" style="width:24px; height:24px;">
+            </button>
+            <div id="current-month" class="month-label"></div>
+            <button class="btn-outline" id="next-month">
+                <img src="/static/img/icons/arrow-right.svg" alt="next" style="width:24px; height:24px;">
+            </button>
+        </div>
+
+        <div class="filters-row">
+            <div class="input-field">
+                <input id="filter-query" type="text" placeholder="Быстрый поиск (дисциплина/преподаватель/аудитория)">
+            </div>
+            <div class="input-field">
+                <select id="filter-subject">
+                    <option value="">Все дисциплины</option>
+                </select>
+            </div>
+            <div class="input-field">
+                <select id="filter-status">
+                    <option value="">Все статусы</option>
+                    <option value="scheduled">Запланировано</option>
+                    <option value="moved">Перенесено</option>
+                    <option value="canceled">Отменено</option>
+                    <option value="online">Онлайн</option>
+                </select>
+            </div>
+            <div class="input-field">
+                <input id="filter-start" type="date">
+            </div>
+            <div class="input-field">
+                <input id="filter-end" type="date">
+            </div>
+        </div>
+
+        <div class="calendar-wrapper">
+            <div id="calendar" class="calendar"></div>
+        </div>
+        <div style="margin-top:16px; display:flex; gap:10px; align-items:center; flex-wrap:wrap; justify-content: center;">
+            <label class="form-label" style="margin:0;">Импортировать из Excel</label>
+            <div class="file-input">
+                <span class="file-btn">Выбрать .xlsx</span>
+                <input type="file" id="excel-file" accept=".xlsx">
+            </div>
+            <button class="btn-outline" id="import-btn">Импортировать</button>
+            <button class="btn-outline" id="export-btn">Экспортировать неделю</button>
+            <button class="btn-outline danger" type="button" id="clear-btn" onclick="showClearConfirm()" title="Очистить все занятия">Очистить полностью</button>
+        </div>
+    </div>
+
+<!-- Модалка подтверждения очистки -->
+<div id="clearConfirmModal" class="modal">
+    <div class="modal-bg" onclick="hideClearConfirm()"></div>
+    <div class="modal-window small">
+        <div class="modal-header">
+            <h2>Очистить расписание?</h2>
+            <button class="modal-close" onclick="hideClearConfirm()">×</button>
+        </div>
+        <div class="modal-body">
+            <p>Будут удалены все занятия. Продолжить?</p>
+            <div style="margin-top:12px; display:flex; gap:10px; flex-wrap:wrap;">
+                <button class="btn-outline danger" onclick="clearAllLessons()">Очистить</button>
+                <button class="btn-outline" onclick="hideClearConfirm()">Отмена</button>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+<!-- Модалка создания занятия -->
+<div id="lessonModal" class="modal">
+    <div class="modal-bg" onclick="closeModal()"></div>
+    <div class="modal-window small">
+        <div class="modal-header">
+            <h2 id="modal-date-title">Добавить занятие</h2>
+            <button class="modal-close" onclick="closeModal()">×</button>
+        </div>
+        <div class="modal-body">
+            <div class="form-grid">
+                <input id="modal-date" type="hidden">
+                <div>
+                    <label class="form-label">Номер пары</label>
+                    <div class="input-field">
+                        <select id="modal-pair">
+                            {% for i in range(1,9) %}
+                            <option value="{{ i }}">{{ i }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+                <div>
+                    <label class="form-label">Дисциплина</label>
+                    <div class="input-field">
+                        <input id="modal-subject" type="text" placeholder="Например: Математика">
+                    </div>
+                </div>
+                <div>
+                    <label class="form-label">Преподаватель</label>
+                    <div class="input-field">
+                        <input id="modal-teacher" type="text" placeholder="Иванов И.И.">
+                    </div>
+                </div>
+                <div>
+                    <label class="form-label">Аудитория</label>
+                    <div class="input-field">
+                        <input id="modal-audience" type="text" placeholder="Например: 401">
+                    </div>
+                </div>
+                <div>
+                    <label class="form-label">Статус</label>
+                    <div class="input-field">
+                        <select id="modal-status">
+                            <option value="scheduled">Запланировано</option>
+                            <option value="moved">Перенесено</option>
+                            <option value="canceled">Отменено</option>
+                            <option value="online">Онлайн</option>
+                        </select>
+                    </div>
+                </div>
+                <div style="grid-column: span 2;">
+                    <label class="form-label">Комментарий</label>
+                    <div class="input-field">
+                        <input id="modal-comment" type="text" placeholder="Комментарий к изменению">
+                    </div>
+                </div>
+            </div>
+            <div style="margin-top:16px; display:flex; gap:10px; flex-wrap: wrap;">
+                <button class="btn" onclick="createLesson()">Сохранить</button>
+                <button class="btn-outline danger" id="delete-btn" style="display:none;" onclick="deleteLesson()">Удалить</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% include "components/lessons_list_modal.html" %}
+{% include "components/clear_confirm_modal.html" %}
+{% endblock %}
+
+{% block scripts %}
+<script src="/static/js/components/alerts.js"></script>
+<script src="/static/js/admin/calendar.js"></script>
+{% endblock %}

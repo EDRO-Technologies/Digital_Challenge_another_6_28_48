@@ -1,0 +1,18 @@
+<div class="radio-field">
+    <label class="radio-wrapper">
+        <input 
+            type="radio"
+            name="{{ name }}"
+            value="{{ value }}"
+            {% if checked %}checked{% endif %}
+        >
+
+        <div class="radio-custom">
+            <div class="radio-dot"></div>
+        </div>
+
+        {% if label %}
+        <span class="radio-label">{{ label }}</span>
+        {% endif %}
+    </label>
+</div>

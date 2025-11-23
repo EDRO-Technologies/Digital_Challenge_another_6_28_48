@@ -1,0 +1,197 @@
+/* =======================================================
+   ОСНОВА АДМИН-ИНТЕРФЕЙСА
+======================================================= */
+
+.admin-wrapper {
+    padding-top: 40px;
+    padding-bottom: 60px;
+}
+
+.admin-title {
+    font-size: 34px;
+    font-weight: 700;
+    margin-bottom: 32px;
+    color: #333;
+}
+
+/* =======================================================
+   ОБЁРТКА СОДЕРЖИМОГО
+======================================================= */
+
+.admin-content {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+/* =======================================================
+   ВЕРХНЯЯ ПАНЕЛЬ (КНОПКИ)
+======================================================= */
+
+.admin-top-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 10px;
+}
+
+/* =======================================================
+   КАРТОЧКИ
+======================================================= */
+
+.admin-card {
+    background: #FFF;
+    border: 2px solid #F2F2F2;
+    padding: 25px;
+    border-radius: 20px;
+    box-shadow: 0 0 0 0 transparent;
+    transition: box-shadow .25s ease;
+}
+
+.admin-card:hover {
+    box-shadow: 0 6px 22px rgba(0,0,0,0.07);
+}
+
+/* =======================================================
+   ФОРМА
+======================================================= */
+
+.admin-form {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    max-width: 520px;
+}
+
+.field-block label {
+    display: block;
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #333;
+}
+
+/* =======================================================
+   ТАБЛИЦЫ
+======================================================= */
+
+.admin-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    border-radius: 20px;
+    overflow: hidden;
+    border: 2px solid #F2F2F2;
+    background: #FFF;
+}
+
+.admin-table thead {
+    background: #F9F9F9;
+}
+
+.admin-table th {
+    padding: 16px;
+    font-weight: 600;
+    text-align: left;
+    font-size: 14px;
+    color: #333;
+    border-bottom: 2px solid #F2F2F2;
+}
+
+.admin-table td {
+    padding: 15px 16px;
+    font-size: 14px;
+    color: #444;
+    border-bottom: 1px solid #EFEFEF;
+}
+
+.admin-table tr:last-child td {
+    border-bottom: none;
+}
+
+.admin-table tr:hover td {
+    background: rgba(1, 171, 128, 0.07);
+}
+
+/* =======================================================
+   КНОПКИ
+======================================================= */
+
+.btn.green {
+    background: #0D9738;
+    color: #fff;
+    padding: 14px 22px;
+    border-radius: 20px;
+    font-size: 15px;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    transition: background .25s ease;
+}
+
+.btn.green:hover {
+    background: #0bbf46;
+}
+
+.btn.red {
+    background: #DF5940;
+    color: #fff;
+    padding: 14px 22px;
+    border-radius: 20px;
+    font-size: 15px;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    transition: background .25s ease;
+}
+
+.btn.red:hover {
+    background: #f26a50;
+}
+
+.btn.gray {
+    background: #F2F2F2;
+    color: #333;
+    padding: 14px 22px;
+    border-radius: 20px;
+    font-size: 15px;
+    font-weight: 600;
+    border: 2px solid #E0E0E0;
+    cursor: pointer;
+    transition: background .25s ease;
+}
+
+.btn.gray:hover {
+    background: #e3e3e3;
+}
+
+/* =======================================================
+   ГРИД-СЕТКА
+======================================================= */
+
+.admin-grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 22px;
+}
+
+.admin-grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+}
+
+/* =======================================================
+   АДАПТИВ
+======================================================= */
+
+@media (max-width: 700px) {
+    .admin-grid-2,
+    .admin-grid-3 {
+        grid-template-columns: 1fr;
+    }
+
+    .admin-title {
+        font-size: 26px;
+        margin-bottom: 20px;
+    }
+}

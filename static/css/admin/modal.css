@@ -1,0 +1,103 @@
+.modal {
+    position: fixed;
+    inset: 0;
+    display: none;
+    z-index: 200;
+}
+
+.modal.show {
+    display: block;
+}
+
+.modal-bg {
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.2);
+    backdrop-filter: blur(3px);
+}
+
+.modal-window {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 520px;
+
+    transform: translate(-50%, -50%);
+    background: #fff;
+    border-radius: 30px;
+    padding: 28px;
+
+    box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+    animation: modalShow .25s ease;
+}
+
+@keyframes modalShow {
+    from { opacity: 0; transform: translate(-50%, -46%); }
+    to   { opacity: 1; transform: translate(-50%, -50%); }
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.modal-header h2 {
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.modal-close {
+    background: none;
+    border: none;
+    font-size: 32px;
+    cursor: pointer;
+    color: #444;
+}
+
+.modal-body {
+    margin-top: 10px;
+}
+
+.modal-body .form-grid {
+    margin-bottom: 20px;
+}
+
+.modal-body .input-field select,
+.modal-body .input-field input {
+    height: 48px;
+    padding: 12px 14px;
+    font-size: 14px;
+}
+
+.modal-body .input-field {
+    width: 100%;
+}
+
+@media (max-width: 420px) {
+    .modal-window {
+        width: 350px;
+        padding: 20px;
+        border-radius: 20px;
+    }
+
+    .modal .modal-window.small {
+        width: 350px;
+    }
+
+    .modal-body .form-grid {
+        display: grid;
+        grid-template-columns: 1fr !important;
+        gap: 12px;
+    }
+
+    .modal .modal-window.small .form-grid {
+        grid-template-columns: 1fr;
+    }
+    .modal .modal-window.small .input-field,
+    .modal .modal-window.small input,
+    .modal .modal-window.small select {
+        width: 100%;
+    }
+}

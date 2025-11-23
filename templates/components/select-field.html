@@ -1,0 +1,19 @@
+<div class="select-field" data-name="{{ name }}">
+    
+    <div class="select-display">
+        <span class="select-text">{{ placeholder }}</span>
+
+        <img src="{{ icon }}"
+             data-icon-default="{{ icon }}"
+             data-icon-active="{{ icon_active }}"
+             class="select-arrow">
+    </div>
+
+    <div class="select-options">
+        {% for option in options %}
+        <div class="select-option" data-value="{{ option }}">{{ option }}</div>
+        {% endfor %}
+    </div>
+
+    <input type="hidden" name="{{ name }}">
+</div>

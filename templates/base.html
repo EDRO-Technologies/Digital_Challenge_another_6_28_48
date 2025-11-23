@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>{% block title %}Сайт{% endblock %}</title>
+
+    <link rel="icon" href="{{ url_for('static', filename='img/icons/Logo.svg') }}">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/components/header.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/components/footer.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/components/input.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/components/buttons.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/components/buttons-style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/components/alert.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/components/alert-popup.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/profile.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/admin/schedule.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/components/index.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/auth.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/admin/modal.css') }}">
+
+
+</head>
+
+<body>
+
+<div id="page-loader">
+    <div class="loader-wrapper">
+        <div class="loader-block title"></div>
+        <div class="loader-block subtitle"></div>
+
+        <div class="loader-row">
+            <div class="loader-block avatar"></div>
+            <div class="loader-block text"></div>
+        </div>
+
+        <div class="loader-block big"></div>
+        <div class="loader-block big"></div>
+    </div>
+</div>
+
+{% include 'components/header.html' %}
+
+<main class="content">
+    {% block content %}{% endblock %}
+</main>
+
+{% include 'components/footer.html' %}
+
+<div id="alert-container"></div>
+
+
+<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+<script src="{{ url_for('static', filename='js/components/profile.js') }}"></script>
+
+<script src="{{ url_for('static', filename='js/components/alerts.js') }}"></script>
+
+<script src="{{ url_for('static', filename='js/components/input_icon.js') }}"></script>
+<script src="{{ url_for('static', filename='js/components/burger.js') }}"></script>
+
+{% if request.path == '/login' %}
+<script src="{{ url_for('static', filename='js/components/login.js') }}"></script>
+{% endif %}
+
+{% if request.path == '/register' %}
+<script src="{{ url_for('static', filename='js/components/register.js') }}"></script>
+{% endif %}
+
+{% block scripts %}{% endblock %}
+
+</body>
+</html>

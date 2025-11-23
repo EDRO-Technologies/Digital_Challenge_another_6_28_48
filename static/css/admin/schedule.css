@@ -1,0 +1,217 @@
+.admin-schedule {
+    padding: 30px 12px 60px;
+}
+
+.calendar-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    padding: 0 6px 8px;
+    box-sizing: border-box;
+}
+
+.calendar-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.calendar-toolbar .btn-outline {
+    padding: 8px;
+    min-width: 42px;
+    max-width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    text-align: center;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 42px;
+}
+
+.file-input {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+}
+
+.file-input input[type="file"] {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.file-input .file-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 16px;
+    border: 2px dashed #0D9738;
+    border-radius: 16px;
+    color: #0D9738;
+    font-weight: 600;
+    background: #f4fff7;
+    transition: 0.2s;
+}
+
+.file-input .file-btn:hover {
+    background: #e8f9ed;
+    border-color: #0b7c2c;
+}
+
+.btn-outline.danger {
+    border-color: #d9534f;
+    color: #d9534f;
+    background: #fff5f5;
+}
+
+.btn-outline.danger:hover {
+    background: #fce4e4;
+    border-color: #c9302c;
+}
+
+.month-label {
+    font-size: 20px;
+    font-weight: 700;
+    color: #0D9738;
+}
+
+.calendar {
+    width: 100%;
+    min-width: 640px;
+    border-radius: 18px;
+    background: #fff;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+    overflow: hidden;
+}
+
+.calendar-row {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+}
+
+.calendar-cell {
+    min-height: 140px;
+    max-height: 140px;
+    border: 1px solid #f1f1f1;
+    padding: 10px;
+    position: relative;
+    background: #fbfbfb;
+    transition: background .2s;
+    overflow: hidden;
+}
+
+.calendar-cell:hover {
+    background: #f4fff7;
+}
+
+.calendar-row.cal-head .calendar-cell {
+    min-height: auto;
+    text-align: center;
+    font-weight: 700;
+    color: #666;
+    background: #f7f7f7;
+}
+
+.calendar-cell.cal-day-head {
+    min-height: auto;
+    text-align: center;
+    font-weight: 700;
+    color: #666;
+    background: #f7f7f7;
+}
+
+.calendar-cell.empty {
+    background: #fafafa;
+}
+
+.day-number {
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 6px;
+}
+
+.lesson-tag {
+    background: #e6f7ed;
+    color: #0D9738;
+    border: 1px solid #c4ebd4;
+    border-radius: 10px;
+    padding: 4px 6px;
+    font-size: 11px;
+    margin-bottom: 4px;
+    display: inline-block;
+    width: 100%;
+    box-sizing: border-box;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.panel {
+    background: #fff;
+    border-radius: 20px;
+    border: 2px solid #F2F2F2;
+    padding: 20px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+}
+
+.filters-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 12px;
+}
+
+.filters-row .input-field {
+    flex: 1 1;
+    max-width: 220px;
+    min-width: 200px;
+}
+
+.filters-row .input-field input,
+.filters-row .input-field select {
+    height: 52px;
+    padding: 12px 16px;
+    font-size: 14px;
+}
+
+.modal .modal-window.small {
+    width: 420px;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px 16px;
+}
+
+.more-lessons {
+    font-size: 11px;
+    color: #0D9738;
+    cursor: pointer;
+    margin-top: 4px;
+}
+
+.lesson-tag.canceled { background: #ffe8e8; color: #b3261e; border-color: #f5b3b3; }
+.lesson-tag.moved { background: #fff4d6; color: #a67b00; border-color: #f1d389; }
+.lesson-tag.online { background: #e4edff; color: #2f58c1; border-color: #b8ccff; }
+
+@media (max-width: 800px) {
+    .calendar-cell { min-height: 110px; max-height: 140px; }
+    .form-grid { grid-template-columns: repeat(1, 1fr); }
+    .calendar-row { grid-template-columns: repeat(7, minmax(38px, 1fr)); }
+    .month-label { font-size: 16px; }
+    .admin-schedule { padding: 18px 12px 32px; }
+    .panel { padding: 12px; }
+    .calendar-toolbar { flex-wrap: wrap; }
+    .modal .modal-window.small { width: 100%; max-width: 420px; }
+    .filters-row { flex-direction: column; align-items: stretch; }
+    .filters-row .input-field { max-width: 100%; min-width: 100%; }
+    .filters-row .input-field input,
+    .filters-row .input-field select { width: 100%; }
+}

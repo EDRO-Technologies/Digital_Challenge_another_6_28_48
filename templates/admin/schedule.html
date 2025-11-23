@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% block title %}Просмотр расписания{% endblock %}
+
+{% block content %}
+<div class="container admin-schedule">
+
+    <div class="schedule-header">
+        <h1>Расписание</h1>
+    </div>
+
+    <div class="panel">
+        <div class="calendar-toolbar">
+            <button class="btn-outline" id="pub-prev">
+                <img src="/static/img/icons/arrow-left.svg" alt="prev" style="width:24px; height:24px;">
+            </button>
+            <div id="current-month" class="month-label"></div>
+            <button class="btn-outline" id="pub-next">
+                <img src="/static/img/icons/arrow-right.svg" alt="next" style="width:24px; height:24px;">
+            </button>
+        </div>
+
+        <div class="filters-row">
+            <div class="input-field">
+                <input id="filter-query" type="text" placeholder="Поиск (дисциплина/преподаватель/аудитория)">
+            </div>
+            <div class="input-field">
+                <select id="filter-subject">
+                    <option value="">Все дисциплины</option>
+                </select>
+            </div>
+            <div class="input-field">
+                <select id="filter-status">
+                    <option value="">Все статусы</option>
+                    <option value="scheduled">Запланировано</option>
+                    <option value="moved">Перенесено</option>
+                    <option value="canceled">Отменено</option>
+                    <option value="online">Онлайн</option>
+                </select>
+            </div>
+            <div class="input-field">
+                <input id="filter-start" type="date">
+            </div>
+            <div class="input-field">
+                <input id="filter-end" type="date">
+            </div>
+        </div>
+
+        <div class="calendar-wrapper">
+            <div id="calendar" class="calendar"></div>
+        </div>
+    </div>
+</div>
+
+{% include "components/lessons_list_modal.html" %}
+{% endblock %}
+
+{% block scripts %}
+<script src="/static/js/components/alerts.js"></script>
+<script src="/static/js/public_calendar.js"></script>
+{% endblock %}

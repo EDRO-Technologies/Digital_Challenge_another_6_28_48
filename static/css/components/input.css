@@ -1,0 +1,481 @@
+/* =========================================================
+   UNIVERSAL INPUT
+========================================================= */
+
+.input-field,
+.icon-input,
+.textarea-field,
+.select-field {
+    width: 100%;
+    max-width: 100%;
+}
+
+
+input,
+textarea {
+    font-family: var(--font-main);
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--color-text);
+
+    background: #fff;
+    border-radius: 20px;
+    border: 2px solid #F2F2F2;
+
+    outline: none;
+    transition: border-color 0.25s ease;
+    caret-color: #333;
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: rgba(51, 51, 51, 0.5);
+    font-weight: 500;
+}
+
+input::selection,
+textarea::selection {
+    background: rgba(1, 171, 128, 0.15);
+}
+
+input {
+    --caret-width: 2px;
+}
+
+.disabled-input {
+    pointer-events: none;
+    background: #F2F2F2;
+    color: #777;
+    cursor: not-allowed;
+}
+
+/* =========================================================
+   TEXT INPUT
+========================================================= */
+
+.input-field input {
+    width: 100%;
+    height: 70px;
+    padding: 15px 25px;
+}
+
+.input-field input:focus {
+    border-color: #0D9738;
+}
+
+.input-field select {
+    width: 100%;
+    height: 70px;
+    padding: 15px 25px;
+    border-radius: 20px;
+    border: 2px solid #F2F2F2;
+    background: #fff;
+    font-family: var(--font-main);
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--color-text);
+    outline: none;
+    appearance: none;
+    -webkit-appearance: none;
+}
+
+.input-field select:focus {
+    border-color: #0D9738;
+}
+
+/* =========================================================
+   INPUT WITH ICON
+========================================================= */
+
+.icon-input {
+    position: relative;
+}
+
+.icon-input .input-icon {
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 28px;
+    height: 28px;
+}
+
+.icon-input input {
+    height: 70px;
+    padding: 15px 25px 15px 60px;
+}
+
+.icon-input input:focus {
+    border-color: #0D9738;
+}
+
+/* =========================================================
+   TEXTAREA
+========================================================= */
+
+.textarea-field textarea {
+    width: 100%;
+    height: 70px;
+    padding: 18px 25px;
+    resize: vertical;
+}
+
+.textarea-field textarea:focus {
+    border-color: #0D9738;
+}
+
+/* =========================================================
+   SELECT FIELD
+========================================================= */
+
+.select-field {
+    position: relative;
+    user-select: none;
+}
+
+.select-display {
+    height: 70px;
+    padding: 15px 25px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    background: #fff;
+    border-radius: 20px;
+    border: 2px solid #F2F2F2;
+
+    cursor: pointer;
+    transition: border-color 0.25s ease;
+}
+
+.select-display.active {
+    border-color: #0D9738;
+}
+
+.select-text {
+    color: rgba(51, 51, 51, 0.5);
+}
+
+.select-arrow {
+    width: 24px;
+    height: 24px;
+    transition: transform 0.25s ease;
+}
+
+.select-display.active .select-arrow {
+    transform: rotate(180deg);
+}
+
+.select-options {
+    position: absolute;
+    top: calc(100% + 8px);
+    width: 100%;
+    padding: 8px 0;
+
+    background: #FFF;
+    border-radius: 16px;
+    border: 2px solid #F2F2F2;
+
+    display: none;
+    flex-direction: column;
+    gap: 4px;
+
+    opacity: 0;
+    transform: translateY(8px);
+    transition: 0.25s ease;
+
+    z-index: 50;
+}
+
+.select-options.open {
+    display: flex;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.select-option {
+    padding: 14px 20px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    transition: background 0.2s ease;
+}
+
+.select-option:hover {
+    background: rgba(1, 171, 128, 0.07);
+}
+
+.select-field.disabled {
+    pointer-events: none;
+}
+
+.select-field.disabled .select-display {
+    background: #F2F2F2;
+    color: #777;
+    cursor: not-allowed;
+    opacity: 1;
+}
+
+.select-field.disabled .select-arrow {
+    opacity: 0.4;
+}
+
+.select-field.disabled .select-text {
+    color: #777;
+}
+
+
+/* =========================================================
+   FORM ERROR MESSAGE
+========================================================= */
+
+.error-message {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    padding: 14px 20px;
+    width: 100%;
+    max-width: 350px;
+
+    border-radius: 20px;
+    border: 2px solid #DF5940;
+
+    background: #FFF;
+
+    font-size: 14px;
+    font-weight: 500;
+
+    animation: fadeIn 0.25s ease;
+}
+
+.error-icon {
+    width: 28px;
+    height: 28px;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-4px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+
+/* =========================================================
+   CHECKBOX
+========================================================= */
+
+.checkbox {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.checkbox input {
+    display: none;
+}
+
+.checkbox-box {
+    width: 28px;
+    height: 28px;
+
+    border-radius: 10px;
+    border: 2px solid #333;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #fff;
+    transition: border-color 0.25s ease;
+}
+
+.checkbox-icon {
+    width: 14px;
+    height: 11px;
+    display: none;
+}
+
+.checkbox input:checked + .checkbox-box {
+    border-color: #0D9738;
+}
+
+.checkbox input:checked + .checkbox-box .checkbox-icon {
+    display: block;
+}
+
+.checkbox-text {
+    font-size: 14px;
+    font-weight: 500;
+}
+
+/* =========================================================
+   RADIO
+========================================================= */
+
+.radio-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+}
+
+.radio-wrapper input {
+    display: none;
+}
+
+.radio-custom {
+    width: 28px;
+    height: 28px;
+
+    border-radius: 50%;
+    border: 2px solid #333;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transition: border-color 0.25s ease;
+}
+
+.radio-dot {
+    width: 20px;
+    height: 20px;
+
+    background: #0D9738;
+    border-radius: 50%;
+
+    opacity: 0;
+    transition: opacity .2s ease;
+}
+
+.radio-wrapper input:checked + .radio-custom {
+    border-color: #0D9738;
+}
+
+.radio-wrapper input:checked + .radio-custom .radio-dot {
+    opacity: 1;
+}
+
+.radio-label {
+    font-size: 14px;
+    font-weight: 500;
+}
+
+/* =========================================================
+   SWITCH
+========================================================= */
+
+.switch-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+}
+
+.switch-wrapper input {
+    display: none;
+}
+
+.switch-track {
+    width: 52px;
+    height: 28px;
+    padding: 4px;
+
+    background: #fff;
+    border: 2px solid #333;
+    border-radius: 15px;
+
+    position: relative;
+    display: flex;
+
+    transition: border-color .25s ease;
+}
+
+.switch-thumb {
+    width: 18px;
+    height: 18px;
+
+    background: #333;
+    border-radius: 10px;
+
+    position: absolute;
+    left: 4px;
+    top: 50%;
+    transform: translateY(-50%);
+
+    transition: .25s ease;
+}
+
+.switch-wrapper input:checked + .switch-track {
+    border-color: #0D9738;
+}
+
+.switch-wrapper input:checked + .switch-track .switch-thumb {
+    left: calc(100% - 4px - 18px);
+    background-color: #0D9738;
+}
+
+.switch-label {
+    font-size: 14px;
+    font-weight: 500;
+}
+
+/* =========================================================
+   ADAPTIVE
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .input-field input,
+    .icon-input input,
+    .select-display {
+        height: 52px;
+        padding: 12px 18px;
+        border-radius: 16px;
+    }
+
+    .icon-input .input-icon {
+        width: 20px;
+        height: 20px;
+        left: 16px;
+    }
+
+    .icon-input input {
+        padding-left: 48px;
+    }
+
+    .checkbox-box,
+    .radio-custom {
+        width: 24px;
+        height: 24px;
+    }
+
+    .checkbox-icon {
+        width: 12px;
+        height: 10px;
+    }
+
+    .radio-dot {
+        width: 12px;
+        height: 12px;
+    }
+
+    .switch-track {
+        width: 48px;
+        height: 26px;
+        padding: 3px;
+    }
+
+    .switch-thumb {
+        width: 16px;
+        height: 16px;
+        left: 3px;
+    }
+
+    .switch-wrapper input:checked + .switch-track .switch-thumb {
+        left: calc(100% - 3px - 16px);
+    }
+}

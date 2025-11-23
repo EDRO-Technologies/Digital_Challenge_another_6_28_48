@@ -1,0 +1,8 @@
+<button 
+    class="btn"
+    {% if onclick %}
+        onclick="{{ onclick }}"
+    {% endif %}
+>
+    {{ text }}
+</button>

@@ -1,0 +1,16 @@
+<div id="clearConfirmModal" class="modal">
+    <div class="modal-bg" onclick="hideClearConfirm()"></div>
+    <div class="modal-window small">
+        <div class="modal-header">
+            <h2>Очистить расписание?</h2>
+            <button class="modal-close" onclick="hideClearConfirm()">×</button>
+        </div>
+        <div class="modal-body">
+            <p>Будут удалены все занятия. Продолжить?</p>
+            <div style="margin-top:12px; display:flex; gap:10px; flex-wrap:wrap;">
+                <button class="btn-outline danger" onclick="clearAllLessons()">Очистить</button>
+                <button class="btn-outline" onclick="hideClearConfirm()">Отмена</button>
+            </div>
+        </div>
+    </div>
+</div>

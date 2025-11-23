@@ -1,0 +1,382 @@
+/* =========================================================
+   HEADER
+========================================================= */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+
+  background: rgba(255, 255, 255, 0.80);
+  backdrop-filter: blur(5px);
+
+  border-bottom: 1px solid var(--color-border);
+  z-index: 1000;
+
+  transition: border-bottom 0.25s ease;
+}
+
+.header.menu-open {
+  border-bottom: 1px solid var(--color-border);
+}
+
+.header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 70px;
+}
+
+.header__logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+}
+
+.logo-main {
+  height: 42px;
+  width: auto;
+  object-fit: contain;
+  display: block;
+}
+
+.logo-divider {
+  width: 2px;
+  height: 28px;
+  background: #CFCFE8AA;
+  border-radius: 2px;
+}
+
+.logo-surgu {
+  height: 38px;
+  width: auto;
+  object-fit: contain;
+  display: block;
+}
+
+.header__nav {
+  display: flex;
+  gap: 36px;
+}
+
+.nav__item {
+  position: relative;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--color-text);
+  transition: opacity 0.2s ease;
+}
+
+.nav__item::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 0%;
+  height: 2px;
+  background: var(--color-primary);
+  border-radius: 2px;
+  transition: width 0.25s ease;
+}
+
+.nav__item:hover {
+  opacity: 0.8;
+}
+
+.nav__item:hover::after {
+  width: 100%;
+}
+
+.header__actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.burger {
+  display: none;
+}
+
+
+/* =========================================================
+   ADAPTIVE HEADER
+========================================================= */
+@media (max-width: 1200px) {
+
+  .header__nav {
+    display: none;
+  }
+
+  .burger {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 40px;
+    height: 40px;
+    padding: 6px;
+
+    background: rgba(255, 255, 255, 0.80);
+    border: 1px solid var(--color-border);
+    border-radius: 60px;
+
+    cursor: pointer;
+    transition: opacity 0.25s ease;
+  }
+
+  .burger img {
+    width: 20px;
+    height: 20px;
+    display: block;
+    transition: opacity 0.2s ease;
+  }
+
+  .header__logo span {
+    display: none;
+  }
+
+  .header__logo-icon {
+    width: 70px;
+    height: 30px;
+  }
+
+  .header__actions {
+    gap: 5px;
+  }
+
+  .btn {
+    padding: 10px 16px;
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 345px) {
+  .header__actions {
+    gap: 5px;
+  }
+}
+
+
+/* =========================================================
+   MOBILE MENU
+========================================================= */
+.mobile-menu {
+    position: fixed;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    height: calc(100vh - 70px);
+
+    background: rgba(255, 255, 255, 0.80);
+    backdrop-filter: blur(5px);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+
+    padding: 24px;
+    z-index: 900;
+
+    opacity: 0;
+    transform: translateY(10px);
+    pointer-events: none;
+
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.mobile-menu.active {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+.mobile-menu__nav {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.mobile-menu__item {
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--color-text);
+}
+
+@media (min-width: 1200px) {
+    .mobile-menu {
+        display: none !important;
+    }
+}
+.profile-btn {
+    display: flex;
+    align-items: center;
+    padding: 5px ;
+    border-radius: 30px;
+    border: 2px solid #0D9739;
+    cursor: pointer;
+    position: relative;
+    gap: 10px;
+    background: #fff;
+
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.profile-btn__avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+    background: #0D9739;
+    flex-shrink: 0;
+}
+
+.profile-btn__avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.profile-btn__name {
+    color: #333;
+    font-family: Montserrat;
+    font-size: 18px;
+    font-weight: 600;
+
+    max-width: 85px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.profile-btn__arrow {
+    width: 18px;
+    margin-left: auto;
+    flex-shrink: 0;
+    transition: transform 0.25s ease;
+}
+
+.profile-btn.active .profile-btn__arrow {
+    transform: rotate(180deg);
+}
+
+.profile-menu {
+    position: absolute;
+    top: 110px;
+    right: 0;
+
+    width: 160px;   
+    padding: 14px 16px;
+
+    display: none;
+    flex-direction: column;
+    gap: 10px;
+
+    background: #FFF;
+    border-radius: 16px;
+    border: 1px solid #E8E8E8;
+
+    box-shadow:
+        0 6px 18px rgba(0,0,0,0.08),
+        0 2px 8px rgba(0,0,0,0.04);
+
+    z-index: 9999;
+}
+
+
+
+.profile-menu__item {
+    display: flex;
+    align-items: center;
+    gap: 8px; 
+    font-family: Montserrat;
+    font-size: 15px;
+    font-weight: 600;
+    color: #333;
+    text-decoration: none;
+    white-space: nowrap;
+
+    padding: 4px 0;
+}
+
+.profile-menu__item img {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+}
+
+.profile-menu__item.exit {
+    color: #DF5940;
+}
+
+.profile-wrapper {
+    position: relative; 
+}
+
+
+@media (max-width: 480px) {
+    .profile-btn {
+        width: 150px;
+        height: 44px;
+        padding: 5px 12px;
+        gap: 8px;
+    }
+
+    .profile-btn__avatar {
+        width: 34px;
+        height: 34px;
+    }
+
+    .profile-btn__name {
+        font-size: 16px;
+        max-width: 70px;
+    }
+
+    .profile-btn__arrow {
+        width: 16px;
+    }
+
+    .profile-menu {
+        width: 190px;
+        padding: 20px;
+        gap: 12px;
+        border-radius: 20px;
+    }
+
+    .profile-menu__item {
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 360px) {
+    .profile-btn {
+        width: 135px;
+        padding: 5px 10px;
+    }
+
+    .profile-btn__name {
+        max-width: 60px;
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 768px) {
+    .logo-surgu {
+        display: none !important;
+    }
+
+    .logo-divider {
+        display: none !important;
+    }
+
+    .logo-main {
+        width: 38px;
+        height: 38px;
+    }
+
+    .header__logo {
+        gap: 0;
+    }
+}

@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %}Курсы{% endblock %}
+
+{% block content %}
+<div class="container" style="padding:40px 0;">
+    <h1>Курсы</h1>
+    <div class="list-cards">
+        {% if courses %}
+            {% for c in courses %}
+                <div class="card-item">
+                    <div class="card-title">{{ c.title }}</div>
+                    <div class="card-sub">{{ c.direction or "Без направления" }}</div>
+                    <p style="margin-top:8px;">{{ c.description or "Нет описания" }}</p>
+                    <p style="margin-top:8px;">Приглашение: <code>{{ request.host_url.rstrip('/') }}/invite/{{ c.invite_code }}</code></p>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p class="empty">Курсов пока нет</p>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

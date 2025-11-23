@@ -1,0 +1,114 @@
+{% extends "base.html" %}
+
+{% block title %}Профиль{% endblock %}
+
+{% block content %}
+
+<section class="profile-wrapper">
+
+    <div class="profile-card">
+
+        <div class="profile-top">
+
+            <div class="profile-photo-wrapper">
+                <div class="profile-photo-bg">
+                    <img src="{{ url_for('static', filename='img/profile/default.png') }}" alt="avatar">
+                </div>
+            </div>
+
+            <div class="profile-info">
+                <p class="profile-name">{{ user.username }}</p>
+                <p class="profile-email">{{ user.email }}</p>
+            </div>
+
+            <div class="profile-edit">
+                {% set text = "Изменить" %}
+                {% set onclick = "enableEdit()" %}
+                {% include "components/button.html" %}
+            </div>
+
+
+
+        </div>
+
+        <div class="profile-grid">
+
+            <div class="field-block">
+                <label class="profile-label">Имя</label>
+                {% set id = "p-name" %}
+                {% set type = "text" %}
+                {% set value = user.username %}
+                {% set placeholder = "Имя" %}
+                {% include "components/input-profile.html" %}
+                
+                
+            </div>
+
+            <div class="field-block">
+                <label class="profile-label">Почта</label>
+                {% set id = "p-email" %}
+                {% set type = "email" %}
+                {% set value = user.email %}
+                {% set placeholder = "Почта" %}
+                {% include "components/input-profile.html" %}
+            </div>
+
+            <div class="field-block">
+                <label class="profile-label">Пароль</label>
+            {% set id = "p-password" %}
+            {% set type = "password" %}
+            {% set value = "" %}
+            {% set placeholder = "*****" %}
+            {% include "components/input-profile.html" %}
+            </div>
+
+            <div class="field-block">
+                <label class="profile-label">Страна</label>
+
+                {% set name = "p-country" %}
+                {% set value = user.country %}
+                {% set placeholder = "Не выбрано" %}
+                {% set icon = url_for('static', filename='img/icons/arrow.svg') %}
+                {% set icon_active = url_for('static', filename='img/icons/arrow_active.svg') %}
+                {% set options = ["Россия", "Беларусь", "Казахстан"] %}
+                {% set disabled = True %}
+
+                {% include "components/select-field.html" %}
+            </div>
+
+            <div class="field-block">
+                <label class="profile-label">Язык</label>
+
+                {% set name = "p-language" %}
+                {% set value = user.language %}
+                {% set placeholder = "Не выбрано" %}
+                {% set icon = url_for('static', filename='img/icons/arrow.svg') %}
+                {% set icon_active = url_for('static', filename='img/icons/arrow_active.svg') %}
+                {% set options = ["Русский", "Английский"] %}
+                {% set disabled = True %}
+
+                {% include "components/select-field.html" %}
+            </div>
+
+            <div class="field-block">
+                <label class="profile-label">Пол</label>
+
+                {% set name = "p-gender" %}
+                {% set value = user.gender %}
+                {% set placeholder = "Не выбрано" %}
+                {% set icon = url_for('static', filename='img/icons/arrow.svg') %}
+                {% set icon_active = url_for('static', filename='img/icons/arrow_active.svg') %}
+                {% set options = ["Мужской", "Женский"] %}
+                {% set disabled = True %}
+
+                {% include "components/select-field.html" %}
+            </div>
+
+        </div>
+
+    </div>
+
+
+</section>
+
+{% endblock %}

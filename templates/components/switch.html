@@ -1,0 +1,17 @@
+<div class="switch-field">
+    <label class="switch-wrapper">
+        <input 
+            type="checkbox"
+            name="{{ name }}"
+            {% if checked %}checked{% endif %}
+        >
+
+        <div class="switch-track">
+            <div class="switch-thumb"></div>
+        </div>
+
+        {% if label %}
+        <span class="switch-label">{{ label }}</span>
+        {% endif %}
+    </label>
+</div>
